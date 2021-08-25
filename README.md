@@ -11,7 +11,7 @@ Aplicativo Windows Form C# feito em .Net Framework 4.6.1 usando Entity framework
 
 ## Como baixar o código
 
-git clone 
+git clone https://github.com/JucelioAmaral/WinFormsEmCamadasDI.git
 
 ## Como configurar?
 
