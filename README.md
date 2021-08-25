@@ -27,3 +27,15 @@ git clone https://github.com/JucelioAmaral/WinFormsEmCamadasDI.git
 
 1. Abrir a solution;
 2. Clicar no botão em Start.
+
+
+## Observações:
+1. Obs1: You cannot add a reference to a .NET Core project to a .NET Framework project.
+If you want to share code between .NET Core and .NET Framework apps / libraries, the shared project must target .NET Standard. If you create a .NET Standard 2.0 project, it could be used in .NET Framework 4.6.1+ projects and .NET Core 2.0+ projects.
+https://forums.asp.net/t/2144362.aspx?Error+it+cannot+be+referenced+by+a+project+that+targets+NETFramework+version+v4+7+2+
+
+1. Obs2: Solução para injetar a dependencia nos forms:
+https://pt.stackoverflow.com/questions/184157/d%C3%BAvida-sobre-como-implementar-uma-inje%C3%A7%C3%A3o-de-depend%C3%AAncia-no-c-utilizando-o-ninj
+
+3. Obs3: Solução para injeção de dependencia do AutoMapper funcionar:
+https://stackoverflow.com/questions/43560555/how-do-i-use-ninject-to-inject-automapper-mapper-in-place-of-imapper
