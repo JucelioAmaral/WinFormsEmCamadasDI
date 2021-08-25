@@ -2,7 +2,7 @@
 # Relacionamento Dono e Cão
 # >>Windows Forms em camadas usando Injeção de Dependência<<
 
-Aplicativo Windows Form C# feito em .Net Framework 4.6.1 usando Entity framework para persistencia, acesso, consultas e relatórios ao banco de dados SQLServer, como SGBD.
+Aplicativo Windows Form C# feito em .Net Framework 4.6.1, em camadas, usando Entity framework para persistencia, acesso, consultas e relatórios ao banco de dados SQLServer, como SGBD.
 
 ## Pré requisitos
  
