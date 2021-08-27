@@ -12,6 +12,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WindonsFormsUsingDI.Domain\WindonsFormsUsingDI.Domain.csproj" />
+    <ProjectReference Include="..\WindonsFormsUsingDI.Repository\WindonsFormsUsingDI.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\" />
   </ItemGroup>
 
 </Project>

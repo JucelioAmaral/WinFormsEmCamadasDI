@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WindonsFormsUsingDI.Repository
+namespace WindonsFormsUsingDI.Repository2
 {
     public class Class1
     {

@@ -30,7 +30,7 @@ namespace WindonsFormsUsingDI
         private void InitializeComponent()
         {
             this.dvgDonoCao = new System.Windows.Forms.DataGridView();
-            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnPesquisarPeloCPF = new System.Windows.Forms.Button();
             this.btnCadastrarSeuCao = new System.Windows.Forms.Button();
             this.txtTelefoneDono = new System.Windows.Forms.TextBox();
             this.txtCPFDono = new System.Windows.Forms.TextBox();
@@ -61,15 +61,15 @@ namespace WindonsFormsUsingDI
             this.dvgDonoCao.Size = new System.Drawing.Size(507, 120);
             this.dvgDonoCao.TabIndex = 5;
             // 
-            // btnPesquisar
+            // btnPesquisarPeloCPF
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(6, 145);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(109, 23);
-            this.btnPesquisar.TabIndex = 12;
-            this.btnPesquisar.Text = "Pesquisar pelo CPF";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            this.btnPesquisarPeloCPF.Location = new System.Drawing.Point(6, 145);
+            this.btnPesquisarPeloCPF.Name = "btnPesquisarPeloCPF";
+            this.btnPesquisarPeloCPF.Size = new System.Drawing.Size(109, 23);
+            this.btnPesquisarPeloCPF.TabIndex = 12;
+            this.btnPesquisarPeloCPF.Text = "Pesquisar pelo CPF";
+            this.btnPesquisarPeloCPF.UseVisualStyleBackColor = true;
+            this.btnPesquisarPeloCPF.Click += new System.EventHandler(this.btnPesquisarPeloCPF_Click);
             // 
             // btnCadastrarSeuCao
             // 
@@ -208,7 +208,7 @@ namespace WindonsFormsUsingDI
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnPesquisar);
+            this.groupBox1.Controls.Add(this.btnPesquisarPeloCPF);
             this.groupBox1.Controls.Add(this.btnCadastrarSeuCao);
             this.groupBox1.Controls.Add(this.txtTelefoneDono);
             this.groupBox1.Controls.Add(this.txtCPFDono);
@@ -248,7 +248,7 @@ namespace WindonsFormsUsingDI
         #endregion
 
         private System.Windows.Forms.DataGridView dvgDonoCao;
-        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Button btnPesquisarPeloCPF;
         private System.Windows.Forms.Button btnCadastrarSeuCao;
         private System.Windows.Forms.TextBox txtTelefoneDono;
         private System.Windows.Forms.TextBox txtCPFDono;

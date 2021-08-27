@@ -4,9 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindonsFormsUsingDI", "WindonsFormsUsingDI\WindonsFormsUsingDI.csproj", "{93A0EC58-F1A7-47D7-AEF5-9DCD41E06855}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EBDC3191-E1DA-4589-B369-999F076E1FDA} = {EBDC3191-E1DA-4589-B369-999F076E1FDA}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindonsFormsUsingDI.Application", "WindonsFormsUsingDI.Application\WindonsFormsUsingDI.Application.csproj", "{70FFD989-100F-4F10-BA42-2BFA0EC3DE1E}"
 	ProjectSection(ProjectDependencies) = postProject
+		{3202814F-7EAA-4F91-9D50-A2ED14B98AE2} = {3202814F-7EAA-4F91-9D50-A2ED14B98AE2}
 		{EBDC3191-E1DA-4589-B369-999F076E1FDA} = {EBDC3191-E1DA-4589-B369-999F076E1FDA}
 	EndProjectSection
 EndProject
