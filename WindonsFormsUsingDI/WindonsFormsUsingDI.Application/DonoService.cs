@@ -52,9 +52,17 @@ namespace WindonsFormsUsingDI.Application
             }
             return false;
         }
-        public bool DeleteDono(DonoDto dono)
+        public bool DeleteDono(string cpf)
         {
-            throw new NotImplementedException();
+            var donoSelecionado = _donoRepository.GetDonoByCPF(cpf);
+            if (donoSelecionado == null) return false;
+            _geralRepository.Delete(donoSelecionado);
+
+            if (_geralRepository.SaveChanges())
+            {
+                return true;
+            }
+            return false;
         }
 
         public void GerarRelatório()

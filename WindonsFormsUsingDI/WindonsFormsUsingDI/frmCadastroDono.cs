@@ -24,14 +24,21 @@ namespace WindonsFormsUsingDI
 
         private void btnPesquisarPeloCPF_Click(object sender, EventArgs e)
         {
-            string cpfDono = txtCPFDono.Text;
-            donoSelecionado = _donoService.GetDono(cpfDono);
-            
-            CPFSelecionado = donoSelecionado.CPF;
+            if (string.IsNullOrEmpty(txtCPFDono.Text) || string.IsNullOrWhiteSpace(txtCPFDono.Text))
+            {
+                MessageBox.Show("Campo CPF vazio");
+            }
+            else
+            {
+                string cpfDono = txtCPFDono.Text;
+                donoSelecionado = _donoService.GetDono(cpfDono);
 
-            txtNomeDono.Text = donoSelecionado.NomeDono;
-            txtCPFDono.Text = donoSelecionado.CPF;
-            txtTelefoneDono.Text = donoSelecionado.Telefone;
+                CPFSelecionado = donoSelecionado.CPF;
+
+                txtNomeDono.Text = donoSelecionado.NomeDono;
+                txtCPFDono.Text = donoSelecionado.CPF;
+                txtTelefoneDono.Text = donoSelecionado.Telefone;
+            }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -56,28 +63,55 @@ namespace WindonsFormsUsingDI
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            var d = new DonoDto()
+            if (string.IsNullOrEmpty(txtCPFDono.Text))
             {
-                NomeDono = txtNomeDono.Text,
-                CPF = txtCPFDono.Text,
-                Telefone = txtTelefoneDono.Text
-            };
-            if (_donoService.UpdateDono(CPFSelecionado, d))
-            {
-                MessageBox.Show("Dono editado com sucesso");
-                clearFields();
+                MessageBox.Show("Campo CPF vazio");
             }
             else
             {
-                clearFields();
-                MessageBox.Show("Erro desconhecido ao salvar dono");
+                var d = new DonoDto()
+                {
+                    NomeDono = txtNomeDono.Text,
+                    CPF = txtCPFDono.Text,
+                    Telefone = txtTelefoneDono.Text
+                };
+
+                if (_donoService.UpdateDono(CPFSelecionado, d))
+                {
+                    MessageBox.Show("Dono editado com sucesso");
+                    clearFields();
+                }
+                else
+                {
+                    clearFields();
+                    MessageBox.Show("Erro desconhecido ao salvar dono");
+                }
             }
+
+            CPFSelecionado = "";
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            frmExcluirRegistro frmCadCao = FormResolve.Resolve<frmExcluirRegistro>();
-            frmCadCao.ShowDialog();
+            if (string.IsNullOrEmpty(txtCPFDono.Text))
+            {
+                MessageBox.Show("Campo CPF vazio");
+            }
+            else
+            {
+                if (_donoService.DeleteDono(CPFSelecionado))
+                {
+                    MessageBox.Show("Dono excluído com sucesso");
+                    clearFields();
+                }
+                else
+                {
+                    clearFields();
+                    MessageBox.Show("Erro desconhecido ao salvar dono");
+                }
+            }
+
+            CPFSelecionado = "";
         }
 
         private void btnCadastrarSeuCao_Click(object sender, EventArgs e)

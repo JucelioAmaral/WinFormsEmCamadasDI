@@ -148,12 +148,6 @@
     <Compile Include="frmCadastroDono.Designer.cs">
       <DependentUpon>frmCadastroDono.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmExcluirRegistro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmExcluirRegistro.Designer.cs">
-      <DependentUpon>frmExcluirRegistro.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAlterarRegistro.resx">

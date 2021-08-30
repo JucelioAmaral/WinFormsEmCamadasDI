@@ -9,7 +9,7 @@ namespace WindonsFormsUsingDI.Application.Contratos
     {
         bool AddDono(DonoDto dono);
         bool UpdateDono(string cpfSelecionado, DonoDto dono);
-        bool DeleteDono(DonoDto dono);
+        bool DeleteDono(string cpfSelecionado);
         DonoDto GetDono(string cpf);
 
         void ListarRelacionamentoDonoCao();
