@@ -7,9 +7,9 @@ namespace WindonsFormsUsingDI.Application.Contratos
 {
     public interface IDonoService
     {
-        bool AddDono(Dono dono);
-        bool UpdateDono(int donoId, Dono dono);
-        bool DeleteDono(Dono dono);
+        bool AddDono(DonoDto dono);
+        bool UpdateDono(string cpfSelecionado, DonoDto dono);
+        bool DeleteDono(DonoDto dono);
         DonoDto GetDono(string cpf);
 
         void ListarRelacionamentoDonoCao();

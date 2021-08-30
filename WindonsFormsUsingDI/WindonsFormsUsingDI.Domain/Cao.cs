@@ -9,7 +9,7 @@ namespace WindonsFormsUsingDI.Domain
     public class Cao
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int CaoId { get; set; }
         [StringLength(100)]
         public string NomeCao { get; set; }
         [StringLength(100)]

@@ -15,13 +15,12 @@ git clone https://github.com/JucelioAmaral/WinFormsEmCamadasDI.git
 
 ## Como configurar?
 
-1. Abrir a solution;
-2. Configurar o arquivo "App.config" com a connectionString, apontando para o banco SQL server;
-3. Abrir o Console do Visual Studio;
-4. Instale o pacote pelo Nuget ou Package Manager Console: Install-Package Ninject;
-5. Executar o comando: Add-Migration MigracaoInicial;
-6. Executar o comando: Update-Database;
-7. Executar o App pelo Visual Studio.
+1. Executar o ScriptWinForDI.sql;
+2. Abrir a solution;
+3. Configurar o arquivo "App.config" com a connectionString, apontando para o banco SQL server;
+4. Abrir o Console do Visual Studio;
+5. Instale o pacote pelo Nuget ou Package Manager Console: Install-Package Ninject;
+6. Executar o App pelo Visual Studio.
 
 ## Como executar o app?
 

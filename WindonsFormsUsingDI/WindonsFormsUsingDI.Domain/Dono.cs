@@ -8,11 +8,11 @@ namespace WindonsFormsUsingDI.Domain
     public class Dono
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int DonoId { get; set; }
         [StringLength(100)]
         public string NomeDono { get; set; }
 
-        [StringLength(14)]
+        [StringLength(15)]
         public string CPF { get; set; }
 
         [StringLength(15)]

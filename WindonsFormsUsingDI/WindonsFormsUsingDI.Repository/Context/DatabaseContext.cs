@@ -21,17 +21,19 @@ namespace WindonsFormsUsingDI.Repository
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //That would turn off cascade delete on all the relationships. Cascade delete may be a desired feature for some use cases.
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            {
-                relationship.DeleteBehavior = DeleteBehavior.Restrict;
-            }
-            //Foi necessário colocar esse Foreach acima para conseguir criar a migration, devido delete cascade.
 
-            modelBuilder.Entity<Dono>()
-                        .HasMany(d => d.Caes)
-                        .WithOne(c => c.Dono)
-                        .OnDelete(DeleteBehavior.Cascade);
+            // SERVERIA PARA CRIAR MIGRATIONS CASO FUNCIONASSE. MAS COMO O .Net framework 4.6.1 não funcionaou com o .Net Standard, criei o BD na mão.
+            ////That would turn off cascade delete on all the relationships. Cascade delete may be a desired feature for some use cases.
+            //foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            //{
+            //    relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            //}
+            ////Foi necessário colocar esse Foreach acima para conseguir criar a migration, devido delete cascade.
+
+            //modelBuilder.Entity<Dono>()
+            //            .HasMany(d => d.Caes)
+            //            .WithOne(c => c.Dono)
+            //            .OnDelete(DeleteBehavior.Cascade);
         }
 
     }

@@ -10,7 +10,7 @@ namespace WindonsFormsUsingDI
     public partial class frmCadastroDono : Form
     {
         private readonly IDonoService _donoService;
-        private int idSelecionado = 0;
+        private string CPFSelecionado = "";
         DonoDto donoSelecionado;
 
         public frmCadastroDono(IDonoService donoService)
@@ -26,6 +26,9 @@ namespace WindonsFormsUsingDI
         {
             string cpfDono = txtCPFDono.Text;
             donoSelecionado = _donoService.GetDono(cpfDono);
+            
+            CPFSelecionado = donoSelecionado.CPF;
+
             txtNomeDono.Text = donoSelecionado.NomeDono;
             txtCPFDono.Text = donoSelecionado.CPF;
             txtTelefoneDono.Text = donoSelecionado.Telefone;
@@ -33,7 +36,7 @@ namespace WindonsFormsUsingDI
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            var d = new Dono()
+            var d = new DonoDto()
             {
                 NomeDono = txtNomeDono.Text,
                 CPF = txtCPFDono.Text,
@@ -53,15 +56,15 @@ namespace WindonsFormsUsingDI
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            var d = new Dono()
+            var d = new DonoDto()
             {
                 NomeDono = txtNomeDono.Text,
                 CPF = txtCPFDono.Text,
                 Telefone = txtTelefoneDono.Text
             };
-            if (_donoService.UpdateDono(idSelecionado, d))
+            if (_donoService.UpdateDono(CPFSelecionado, d))
             {
-                MessageBox.Show("Novo dono salvo com sucesso");
+                MessageBox.Show("Dono editado com sucesso");
                 clearFields();
             }
             else

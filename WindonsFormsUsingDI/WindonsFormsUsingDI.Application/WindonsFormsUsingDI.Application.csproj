@@ -15,8 +15,4 @@
     <ProjectReference Include="..\WindonsFormsUsingDI.Repository\WindonsFormsUsingDI.Repository.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
-
 </Project>

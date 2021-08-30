@@ -28,8 +28,9 @@ namespace WindonsFormsUsingDI.Application
             return _mapper.Map<DonoDto>(donoSelecionado);
         }
 
-        public bool AddDono(Dono dono)
+        public bool AddDono(DonoDto donodto)
         {
+            var dono = _mapper.Map<Dono>(donodto);
             _geralRepository.Add<Dono>(dono);
             if (_geralRepository.SaveChanges())
             {
@@ -37,16 +38,21 @@ namespace WindonsFormsUsingDI.Application
             }
             return false;
         }
-        public bool UpdateDono(int id, Dono dono)
+        public bool UpdateDono(string cpf, DonoDto dono)
         {
-            _geralRepository.Update<Dono>(dono);
+            var donoSelecionado = _donoRepository.GetDonoByCPF(cpf);
+            if (donoSelecionado == null) return false;
+
+            dono.Id = donoSelecionado.DonoId;
+            _mapper.Map(dono, donoSelecionado);
+            _geralRepository.Update<Dono>(donoSelecionado);
             if (_geralRepository.SaveChanges())
             {
                 return true;
             }
             return false;
         }
-        public bool DeleteDono(Dono dono)
+        public bool DeleteDono(DonoDto dono)
         {
             throw new NotImplementedException();
         }
