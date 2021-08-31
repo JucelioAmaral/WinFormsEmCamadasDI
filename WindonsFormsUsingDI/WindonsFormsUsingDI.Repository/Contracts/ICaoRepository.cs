@@ -6,8 +6,8 @@ using WindonsFormsUsingDI.Domain;
 namespace WindonsFormsUsingDI.Repository.Contracts
 {
     public interface ICaoRepository
-    {
-        Cao GetCaoByNome(string nomeCao);        
-        Cao GetCaoByCPFDono(int donoID);
+    {           
+        Cao GetCaoByID(int idCao);
+        Cao GetCaoByNome(string nomeCao);
     }
 }

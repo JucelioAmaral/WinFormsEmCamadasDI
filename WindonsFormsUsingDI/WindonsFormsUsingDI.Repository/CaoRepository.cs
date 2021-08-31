@@ -18,14 +18,11 @@ namespace WindonsFormsUsingDI.Repository
 
         }
 
-        public Task<Cao[]> GetCaoByCPFDono(int donoID)
+        public Cao GetCaoByID(int idCao)
         {
             IQueryable<Cao> query = _context.tblCao;
-
-            query = query.AsNoTracking()
-                         .Where(cao => cao.DonoId == donoID);
-
-            return query.ToArrayAsync();
+            query = query.Where(d => d.CaoId == idCao);
+            return query.FirstOrDefault();
         }
 
         public Cao GetCaoByNome(string nomeCao)
@@ -33,20 +30,6 @@ namespace WindonsFormsUsingDI.Repository
             IQueryable<Cao> query = _context.tblCao;
             query = query.Where(d => d.NomeCao == nomeCao);
             return  query.FirstOrDefault();
-
-            //int idCao
-            //IQueryable<Dono> query = _context.tblDono
-            //.Include(c => c.Caes);
-
-            //query = query.AsNoTracking().OrderBy(c => c.DonoId)
-            //                .Where(c => c.DonoId == idCao);
-                        
-            //return query.FirstOrDefault();
-        }
-
-        Cao ICaoRepository.GetCaoByCPFDono(int donoID)
-        {
-            throw new NotImplementedException();
         }
     }
 }

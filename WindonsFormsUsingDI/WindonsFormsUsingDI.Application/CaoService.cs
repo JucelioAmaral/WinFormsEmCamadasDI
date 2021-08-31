@@ -19,11 +19,13 @@ namespace WindonsFormsUsingDI.Application
             _caoRepository = caoRepository;
             _mapper = mapper;
         }
-        public CaoDto GetCaoByNomeCao(string nomeCao)
+        //public CaoDto GetCaoByNomeCao(string nomeCao)
+        public Cao GetCaoByNomeCao(string nomeCao)
         {
             var donoSelecionado = _caoRepository.GetCaoByNome(nomeCao);
             if (donoSelecionado == null) return null;
-            return _mapper.Map<CaoDto>(donoSelecionado);            
+            //return _mapper.Map<CaoDto>(donoSelecionado);            
+            return donoSelecionado;
         }
                 
         public CaoDto GetCao(string cpfDono)
@@ -48,9 +50,19 @@ namespace WindonsFormsUsingDI.Application
             throw new System.NotImplementedException();
         }
 
-        public bool UpdateCao(string caoSelecionado, CaoDto dono)
+        public bool UpdateCao(int IDcaoSelecionado, CaoDto cao)
         {
-            throw new System.NotImplementedException();
+            var caoSelecionado = _caoRepository.GetCaoByID(IDcaoSelecionado);
+            if (caoSelecionado == null) return false;
+
+            cao.Id = caoSelecionado.CaoId;
+            _mapper.Map(cao, caoSelecionado);
+            _geralRepository.Update<Cao>(caoSelecionado);
+            if (_geralRepository.SaveChanges())
+            {
+                return true;
+            }
+            return false;
         }
 
     }

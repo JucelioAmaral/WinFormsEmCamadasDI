@@ -58,13 +58,6 @@ namespace WindonsFormsUsingDI.Application
             return false;
         }
 
-        //public DonoDto GetDono(string cpf)
-        //{
-        //    var donoSelecionado = _donoRepository.GetDonoByCPF(cpf);
-        //    if (donoSelecionado == null) return null;
-        //    return _mapper.Map<DonoDto>(donoSelecionado);
-        //}
-
         public Dono GetDono(string cpf)
         {
             var donoSelecionado = _donoRepository.GetDonoByCPF(cpf);

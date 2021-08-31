@@ -11,8 +11,10 @@ namespace WindonsFormsUsingDI
         private readonly ICaoService _caoService;
         private readonly IGeralService _geralService;
 
-        CaoDto caoSelecionado;
-        public int IDDono;
+        //CaoDto caoSelecionado;
+        Cao caoSelecionado;
+        public int IDDonoSelecionado;
+        public int IDCaoSelecioonado;
 
         public frmCadastroCao(ICaoService caoService, IGeralService geralService)
         {
@@ -20,7 +22,7 @@ namespace WindonsFormsUsingDI
             _caoService = caoService;
             _geralService = geralService;
             txtNomeDono.Text = Global.NomeDoDonoFromfrmCadastroDono;
-            IDDono = Global.IDdoDonoFromfrmCadastroDono;
+            IDDonoSelecionado = Global.IDdoDonoFromfrmCadastroDono;
         }
 
         private void btnPesquisarPeloNomeDoCao_Click(object sender, EventArgs e)
@@ -39,6 +41,7 @@ namespace WindonsFormsUsingDI
                 else
                 {
                     txtRacaCao.Text = caoSelecionado.Raca;
+                    IDCaoSelecioonado = caoSelecionado.CaoId;
                 }
             }
         }
@@ -50,7 +53,7 @@ namespace WindonsFormsUsingDI
                 NomeCao = txtNomeCao.Text,
                 Raca = txtRacaCao.Text
             };
-            if (_caoService.AddCao(IDDono, d))
+            if (_caoService.AddCao(IDDonoSelecionado, d))
             {
                 MessageBox.Show("Cão salvo com sucesso");
                 clearFields();
@@ -64,6 +67,21 @@ namespace WindonsFormsUsingDI
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            var d = new CaoDto()
+            {
+                NomeCao = txtNomeCao.Text,
+                Raca = txtRacaCao.Text
+            };
+            if (_caoService.UpdateCao(IDCaoSelecioonado, d))
+            {
+                MessageBox.Show("Cão editado com sucesso");
+                clearFields();
+            }
+            else
+            {
+                clearFields();
+                MessageBox.Show("Erro desconhecido ao salvar dono");
+            }
 
         }
 
