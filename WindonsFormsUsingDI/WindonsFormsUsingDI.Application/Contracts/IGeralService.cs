@@ -8,8 +8,7 @@ namespace WindonsFormsUsingDI.Application.Contracts
 {
     public interface IGeralService
     {
-        Task<DonoCaoDto> GetAll();
-        Task<DonoCaoDto> GeraRelatório();
-        Task<DonoCaoDto> ListarRelacionamentoDonoCao();        
+        Task<DonoCaoDto[]> GeraRelatório();
+        Task<DonoCaoDto[]> ListarRelacionamentoDonoCao();
     }
 }

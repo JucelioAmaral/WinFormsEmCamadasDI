@@ -58,7 +58,7 @@ namespace WindonsFormsUsingDI
             this.dvgDonoCao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgDonoCao.Location = new System.Drawing.Point(25, 222);
             this.dvgDonoCao.Name = "dvgDonoCao";
-            this.dvgDonoCao.Size = new System.Drawing.Size(507, 120);
+            this.dvgDonoCao.Size = new System.Drawing.Size(528, 120);
             this.dvgDonoCao.TabIndex = 5;
             // 
             // btnPesquisarPeloCPF

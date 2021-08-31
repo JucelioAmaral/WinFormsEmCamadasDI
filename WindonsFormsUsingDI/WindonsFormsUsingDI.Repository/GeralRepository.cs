@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using WindonsFormsUsingDI.Repository.Contracts;
 
 namespace WindonsFormsUsingDI.Repository
@@ -26,11 +25,6 @@ namespace WindonsFormsUsingDI.Repository
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
-        }
-
-        public void GetAll<T>(T entity) where T : class
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<bool> SaveChangesAsync()

@@ -19,9 +19,13 @@ namespace WindonsFormsUsingDI
             InitializeComponent();
             _donoService = donoService;
             _geralService = geralService;
+            CarregarGridView();
+        }
 
-            //IMPLEMENTAR PARA CARREGAR O DATAGRIDVIEW.
-            //dvgDonoCao.DataSource = _geralService.GetAll();
+        public async void CarregarGridView()
+        {
+
+            dvgDonoCao.DataSource = await _geralService.ListarRelacionamentoDonoCao();
         }
 
         private async void btnPesquisarPeloCPF_Click(object sender, EventArgs e)

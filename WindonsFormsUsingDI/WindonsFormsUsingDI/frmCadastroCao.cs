@@ -99,7 +99,7 @@ namespace WindonsFormsUsingDI
             {
                 if (await _caoService.DeleteCao(IDCaoSelecioonado))
                 {
-                    MessageBox.Show("Dono excluído com sucesso","Sucesso!");
+                    MessageBox.Show("Cão excluído com sucesso","Sucesso!");
                     clearFields();
                 }
                 else

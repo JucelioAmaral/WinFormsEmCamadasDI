@@ -19,11 +19,12 @@ namespace WindonsFormsUsingDI.Application.Helpers
             //Para injeção de dependencia funcionar nos formulários.
             Bind<IDonoService>().To<DonoService>();
             Bind<ICaoService>().To<CaoService>();
-            Bind<IGeralService>().To<GeralService>();
+            Bind<IGeralService>().To<GeralService>();            
 
             Bind<IDonoRepository>().To<DonoRepository>();
             Bind<ICaoRepository>().To<CaoRepository>();
-            Bind<IGeralRepository>().To<GeralRepository>();            
+            Bind<IGeralRepository>().To<GeralRepository>();
+            Bind<IGeralRelatorioRepository>().To<GeralRelatorioRepository>();
 
             //https://stackoverflow.com/questions/43560555/how-do-i-use-ninject-to-inject-automapper-mapper-in-place-of-imapper
             //Para injeção de dependencia do AutoMapper funcionar.
