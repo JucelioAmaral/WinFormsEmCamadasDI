@@ -130,12 +130,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAlterarRegistro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmAlterarRegistro.Designer.cs">
-      <DependentUpon>frmAlterarRegistro.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmCadastroCao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,9 +144,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAlterarRegistro.resx">
-      <DependentUpon>frmAlterarRegistro.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmCadastroCao.resx">
       <DependentUpon>frmCadastroCao.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WindonsFormsUsingDI.Application;
-using WindonsFormsUsingDI.Application.Contratos;
+using WindonsFormsUsingDI.Application.Contracts;
 using WindonsFormsUsingDI.Application.Helpers;
 using WindonsFormsUsingDI.Domain;
 
@@ -10,13 +10,15 @@ namespace WindonsFormsUsingDI
     public partial class frmCadastroDono : Form
     {
         private readonly IDonoService _donoService;
+        private readonly IGeralService _geralService;
         private string CPFSelecionado = "";
-        DonoDto donoSelecionado;
+        Dono donoSelecionado;
 
-        public frmCadastroDono(IDonoService donoService)
+        public frmCadastroDono(IDonoService donoService, IGeralService geralService)
         {
             InitializeComponent();
             _donoService = donoService;
+            _geralService = geralService;
 
             //IMPLEMENTAR PARA CARREGAR O DATAGRIDVIEW.
             //dvgDonoCao.DataSource = _geralService.GetAll();
@@ -33,11 +35,14 @@ namespace WindonsFormsUsingDI
                 string cpfDono = txtCPFDono.Text;
                 donoSelecionado = _donoService.GetDono(cpfDono);
 
-                CPFSelecionado = donoSelecionado.CPF;
-
                 txtNomeDono.Text = donoSelecionado.NomeDono;
                 txtCPFDono.Text = donoSelecionado.CPF;
                 txtTelefoneDono.Text = donoSelecionado.Telefone;
+                
+                CPFSelecionado = donoSelecionado.CPF;
+                //http://www.macoratti.net/10/09/net_vgb1.htm
+                Global.NomeDoDonoFromfrmCadastroDono = donoSelecionado.NomeDono;
+                Global.IDdoDonoFromfrmCadastroDono = donoSelecionado.DonoId;
             }
         }
 
@@ -116,9 +121,16 @@ namespace WindonsFormsUsingDI
 
         private void btnCadastrarSeuCao_Click(object sender, EventArgs e)
         {
-            //https://pt.stackoverflow.com/questions/184157/d%C3%BAvida-sobre-como-implementar-uma-inje%C3%A7%C3%A3o-de-depend%C3%AAncia-no-c-utilizando-o-ninj
-            frmCadastroCao frmCadCao = FormResolve.Resolve<frmCadastroCao>();
-            frmCadCao.ShowDialog();
+            if (string.IsNullOrEmpty(txtCPFDono.Text) || string.IsNullOrWhiteSpace(txtCPFDono.Text))
+            {
+                MessageBox.Show("Primeiro pesquise o dono do cão(es)");
+            }
+            else
+            {
+                //https://pt.stackoverflow.com/questions/184157/d%C3%BAvida-sobre-como-implementar-uma-inje%C3%A7%C3%A3o-de-depend%C3%AAncia-no-c-utilizando-o-ninj
+                frmCadastroCao frmCadCao = FormResolve.Resolve<frmCadastroCao>();
+                frmCadCao.ShowDialog();
+            }
         }
         public void clearFields()
         {

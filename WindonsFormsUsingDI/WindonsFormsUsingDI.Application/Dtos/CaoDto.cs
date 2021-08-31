@@ -8,6 +8,6 @@ namespace WindonsFormsUsingDI.Application.Dtos
     {
         public int Id { get; set; }
         public string NomeCao { get; set; }
-        public string RacaCao { get; set; }
+        public string Raca { get; set; }
     }
 }

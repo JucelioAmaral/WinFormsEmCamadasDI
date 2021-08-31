@@ -15,7 +15,7 @@ namespace WindonsFormsUsingDI.Repository
 
         public Dono GetDonoByCPF(string cpf)
         {
-            IQueryable<Dono> query = _context.tblDono.Where(d => d.CPF == cpf);
+            IQueryable<Dono> query = _context.tblDono;
             query = query.Where(d => d.CPF == cpf);
             return query.FirstOrDefault();
         }

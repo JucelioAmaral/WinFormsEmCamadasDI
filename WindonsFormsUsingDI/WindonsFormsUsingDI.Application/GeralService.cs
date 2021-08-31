@@ -1,10 +1,11 @@
-﻿using WindonsFormsUsingDI.Application.Contratos;
+﻿using WindonsFormsUsingDI.Application.Contracts;
 using WindonsFormsUsingDI.Application.Dtos;
 
 namespace WindonsFormsUsingDI.Application
 {
     public class GeralService : IGeralService
     {
+
         /// <summary>
         /// Busca os registros para preencher o DataGridView
         /// </summary>
@@ -18,6 +19,11 @@ namespace WindonsFormsUsingDI.Application
         /// </summary>
         /// <returns>Gera relatório em excel.</returns>
         public DonoCaoDto GeraRelatório()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public DonoCaoDto ListarRelacionamentoDonoCao()
         {
             throw new System.NotImplementedException();
         }

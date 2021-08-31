@@ -29,33 +29,17 @@ namespace WindonsFormsUsingDI
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnConfirmar = new System.Windows.Forms.Button();
-            this.btnPesquisar = new System.Windows.Forms.Button();
             this.txtRacaCao = new System.Windows.Forms.TextBox();
             this.txtNomeCao = new System.Windows.Forms.TextBox();
             this.txtNomeDono = new System.Windows.Forms.TextBox();
             this.lblRacaDoCao = new System.Windows.Forms.Label();
             this.lblNomeCao = new System.Windows.Forms.Label();
             this.lblNomeDoDono = new System.Windows.Forms.Label();
+            this.btnPesquisarPeloNomeDoCao = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnConfirmar
-            // 
-            this.btnConfirmar.Location = new System.Drawing.Point(306, 108);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
-            this.btnConfirmar.TabIndex = 32;
-            this.btnConfirmar.Text = "Confirmar";
-            this.btnConfirmar.UseVisualStyleBackColor = true;
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Location = new System.Drawing.Point(206, 108);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 31;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
             // 
             // txtRacaCao
             // 
@@ -73,6 +57,7 @@ namespace WindonsFormsUsingDI
             // 
             // txtNomeDono
             // 
+            this.txtNomeDono.Enabled = false;
             this.txtNomeDono.Location = new System.Drawing.Point(97, 17);
             this.txtNomeDono.Name = "txtNomeDono";
             this.txtNomeDono.Size = new System.Drawing.Size(471, 20);
@@ -105,13 +90,55 @@ namespace WindonsFormsUsingDI
             this.lblNomeDoDono.TabIndex = 25;
             this.lblNomeDoDono.Text = "Nome do Dono:";
             // 
+            // btnPesquisarPeloNomeDoCao
+            // 
+            this.btnPesquisarPeloNomeDoCao.Location = new System.Drawing.Point(94, 106);
+            this.btnPesquisarPeloNomeDoCao.Name = "btnPesquisarPeloNomeDoCao";
+            this.btnPesquisarPeloNomeDoCao.Size = new System.Drawing.Size(164, 23);
+            this.btnPesquisarPeloNomeDoCao.TabIndex = 34;
+            this.btnPesquisarPeloNomeDoCao.Text = "Pesquisar pelo nome do cão";
+            this.btnPesquisarPeloNomeDoCao.UseVisualStyleBackColor = true;
+            this.btnPesquisarPeloNomeDoCao.Click += new System.EventHandler(this.btnPesquisarPeloNomeDoCao_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(493, 106);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 33;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(412, 106);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 32;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Location = new System.Drawing.Point(331, 106);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 31;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
             // frmCadastroCao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 149);
-            this.Controls.Add(this.btnConfirmar);
-            this.Controls.Add(this.btnPesquisar);
+            this.ClientSize = new System.Drawing.Size(592, 157);
+            this.Controls.Add(this.btnPesquisarPeloNomeDoCao);
+            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.txtRacaCao);
             this.Controls.Add(this.txtNomeCao);
             this.Controls.Add(this.txtNomeDono);
@@ -126,14 +153,15 @@ namespace WindonsFormsUsingDI
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnConfirmar;
-        private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.TextBox txtRacaCao;
         private System.Windows.Forms.TextBox txtNomeCao;
         private System.Windows.Forms.TextBox txtNomeDono;
         private System.Windows.Forms.Label lblRacaDoCao;
         private System.Windows.Forms.Label lblNomeCao;
         private System.Windows.Forms.Label lblNomeDoDono;
+        private System.Windows.Forms.Button btnPesquisarPeloNomeDoCao;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnSalvar;
     }
 }

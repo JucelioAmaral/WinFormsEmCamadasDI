@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using WindonsFormsUsingDI.Application.Dtos;
 using WindonsFormsUsingDI.Domain;
 
 namespace WindonsFormsUsingDI.Application.Helpers.ProfileDto
@@ -8,6 +9,7 @@ namespace WindonsFormsUsingDI.Application.Helpers.ProfileDto
         public WindonsFormsUsingDIProfile()
         {
             CreateMap<Dono, DonoDto>().ReverseMap();
+            CreateMap<Cao, CaoDto>().ReverseMap();
         }
     }
 }

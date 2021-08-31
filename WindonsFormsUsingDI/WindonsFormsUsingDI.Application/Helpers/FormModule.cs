@@ -4,7 +4,7 @@ using Ninject.Modules;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WindonsFormsUsingDI.Application.Contratos;
+using WindonsFormsUsingDI.Application.Contracts;
 using WindonsFormsUsingDI.Application.Helpers.ProfileDto;
 using WindonsFormsUsingDI.Repository;
 using WindonsFormsUsingDI.Repository.Contracts;
@@ -23,7 +23,7 @@ namespace WindonsFormsUsingDI.Application.Helpers
 
             Bind<IDonoRepository>().To<DonoRepository>();
             Bind<ICaoRepository>().To<CaoRepository>();
-            Bind<IGeralRepository>().To<GeralRepository>();
+            Bind<IGeralRepository>().To<GeralRepository>();            
 
             //https://stackoverflow.com/questions/43560555/how-do-i-use-ninject-to-inject-automapper-mapper-in-place-of-imapper
             //Para injeção de dependencia do AutoMapper funcionar.

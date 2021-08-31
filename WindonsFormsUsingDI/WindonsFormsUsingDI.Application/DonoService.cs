@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WindonsFormsUsingDI.Application.Contratos;
+using WindonsFormsUsingDI.Application.Contracts;
 using WindonsFormsUsingDI.Domain;
 using WindonsFormsUsingDI.Repository.Contracts;
 
@@ -19,13 +19,6 @@ namespace WindonsFormsUsingDI.Application
             _donoRepository = donoRepository;
             _geralRepository = geralRepository;
             _mapper = mapper;
-        }
-
-        public DonoDto GetDono(string cpf)
-        {
-            var donoSelecionado = _donoRepository.GetDonoByCPF(cpf);
-            if (donoSelecionado == null) return null;
-            return _mapper.Map<DonoDto>(donoSelecionado);
         }
 
         public bool AddDono(DonoDto donodto)
@@ -65,14 +58,18 @@ namespace WindonsFormsUsingDI.Application
             return false;
         }
 
-        public void GerarRelatório()
-        {
-            throw new NotImplementedException();
-        }
+        //public DonoDto GetDono(string cpf)
+        //{
+        //    var donoSelecionado = _donoRepository.GetDonoByCPF(cpf);
+        //    if (donoSelecionado == null) return null;
+        //    return _mapper.Map<DonoDto>(donoSelecionado);
+        //}
 
-        public void ListarRelacionamentoDonoCao()
+        public Dono GetDono(string cpf)
         {
-            throw new NotImplementedException();
+            var donoSelecionado = _donoRepository.GetDonoByCPF(cpf);
+            if (donoSelecionado == null) return null;
+            return donoSelecionado;
         }
     }
 }

@@ -8,6 +8,5 @@ namespace WindonsFormsUsingDI.Repository.Contracts
     public interface IDonoRepository
     {
         Dono GetDonoByCPF(string donoId);
-
     }
 }
