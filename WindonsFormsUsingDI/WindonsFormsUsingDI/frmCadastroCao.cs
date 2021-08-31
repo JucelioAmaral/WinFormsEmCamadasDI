@@ -25,7 +25,7 @@ namespace WindonsFormsUsingDI
             IDDonoSelecionado = Global.IDdoDonoFromfrmCadastroDono;
         }
 
-        private void btnPesquisarPeloNomeDoCao_Click(object sender, EventArgs e)
+        private async void btnPesquisarPeloNomeDoCao_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtNomeCao.Text) || string.IsNullOrWhiteSpace(txtNomeCao.Text))
             {
@@ -33,10 +33,14 @@ namespace WindonsFormsUsingDI
             }
             else
             {
-                caoSelecionado = _caoService.GetCaoByNomeCao(txtNomeCao.Text);
-                if (caoSelecionado.NomeCao == "")
+                caoSelecionado = await _caoService.GetCaoByNomeCao(txtNomeCao.Text, IDDonoSelecionado);
+                if (caoSelecionado == null)
                 {
-                    MessageBox.Show("Não há cão com este nome.", "Erro!");
+                    string message = $"Não há cão para este Dono ou o cão {txtNomeCao.Text} não pertence a este dono.";
+                    string caption = "Erro!";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -46,14 +50,14 @@ namespace WindonsFormsUsingDI
             }
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private async void btnSalvar_Click(object sender, EventArgs e)
         {
             var d = new CaoDto()
             {
                 NomeCao = txtNomeCao.Text,
                 Raca = txtRacaCao.Text
             };
-            if (_caoService.AddCao(IDDonoSelecionado, d))
+            if (await _caoService.AddCao(IDDonoSelecionado, d))
             {
                 MessageBox.Show("Cão salvo com sucesso", "Sucesso!");
                 clearFields();
@@ -65,14 +69,14 @@ namespace WindonsFormsUsingDI
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private async void btnEditar_Click(object sender, EventArgs e)
         {
             var d = new CaoDto()
             {
                 NomeCao = txtNomeCao.Text,
                 Raca = txtRacaCao.Text
             };
-            if (_caoService.UpdateCao(IDCaoSelecioonado, d))
+            if (await _caoService.UpdateCao(IDCaoSelecioonado, d))
             {
                 MessageBox.Show("Cão editado com sucesso", "Sucesso!");
                 clearFields();
@@ -85,7 +89,7 @@ namespace WindonsFormsUsingDI
             IDCaoSelecioonado = 0;
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private async void btnExcluir_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtNomeCao.Text))
             {
@@ -93,7 +97,7 @@ namespace WindonsFormsUsingDI
             }
             else
             {
-                if (_caoService.DeleteCao(IDCaoSelecioonado))
+                if (await _caoService.DeleteCao(IDCaoSelecioonado))
                 {
                     MessageBox.Show("Dono excluído com sucesso","Sucesso!");
                     clearFields();

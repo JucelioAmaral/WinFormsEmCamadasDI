@@ -1,4 +1,5 @@
-﻿using WindonsFormsUsingDI.Application.Contracts;
+﻿using System.Threading.Tasks;
+using WindonsFormsUsingDI.Application.Contracts;
 using WindonsFormsUsingDI.Application.Dtos;
 
 namespace WindonsFormsUsingDI.Application
@@ -10,7 +11,7 @@ namespace WindonsFormsUsingDI.Application
         /// Busca os registros para preencher o DataGridView
         /// </summary>
         /// <returns></returns>
-        public DonoCaoDto GetAll()
+        public async Task<DonoCaoDto> GetAll()
         {
             throw new System.NotImplementedException();
         }
@@ -18,12 +19,12 @@ namespace WindonsFormsUsingDI.Application
         /// Gera relatório
         /// </summary>
         /// <returns>Gera relatório em excel.</returns>
-        public DonoCaoDto GeraRelatório()
+        public async Task<DonoCaoDto> GeraRelatório()
         {
             throw new System.NotImplementedException();
         }
 
-        public DonoCaoDto ListarRelacionamentoDonoCao()
+        public async Task<DonoCaoDto> ListarRelacionamentoDonoCao()
         {
             throw new System.NotImplementedException();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using WindonsFormsUsingDI.Repository.Contracts;
 
 namespace WindonsFormsUsingDI.Repository
@@ -32,9 +33,9 @@ namespace WindonsFormsUsingDI.Repository
             throw new NotImplementedException();
         }
 
-        public bool SaveChanges()
+        public async Task<bool> SaveChangesAsync()
         {
-            return (_context.SaveChanges()) > 0;
+            return (await _context.SaveChangesAsync()) > 0;
         }
 
     }

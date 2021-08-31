@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace WindonsFormsUsingDI.Repository.Contracts
 {
@@ -11,6 +12,6 @@ namespace WindonsFormsUsingDI.Repository.Contracts
         void Update<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
         void GetAll<T>(T entity) where T : class;
-        bool SaveChanges();
+        Task<bool> SaveChangesAsync();
     }
 }

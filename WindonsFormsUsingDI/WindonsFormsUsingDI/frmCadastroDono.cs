@@ -24,7 +24,7 @@ namespace WindonsFormsUsingDI
             //dvgDonoCao.DataSource = _geralService.GetAll();
         }
 
-        private void btnPesquisarPeloCPF_Click(object sender, EventArgs e)
+        private async void btnPesquisarPeloCPF_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCPFDono.Text) || string.IsNullOrWhiteSpace(txtCPFDono.Text))
             {
@@ -33,20 +33,30 @@ namespace WindonsFormsUsingDI
             else
             {
                 string cpfDono = txtCPFDono.Text;
-                donoSelecionado = _donoService.GetDono(cpfDono);
+                donoSelecionado = await _donoService.GetDono(cpfDono);
+                if (donoSelecionado == null)
+                {
+                    string message = $"Não há Dono com este CPF {txtCPFDono.Text} ou está errado.";
+                    string caption = "Erro!";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Error);
+                }
+                else
+                {
+                    txtNomeDono.Text = donoSelecionado.NomeDono;
+                    txtCPFDono.Text = donoSelecionado.CPF;
+                    txtTelefoneDono.Text = donoSelecionado.Telefone;
 
-                txtNomeDono.Text = donoSelecionado.NomeDono;
-                txtCPFDono.Text = donoSelecionado.CPF;
-                txtTelefoneDono.Text = donoSelecionado.Telefone;
-                
-                CPFSelecionado = donoSelecionado.CPF;
-                //http://www.macoratti.net/10/09/net_vgb1.htm
-                Global.NomeDoDonoFromfrmCadastroDono = donoSelecionado.NomeDono;
-                Global.IDdoDonoFromfrmCadastroDono = donoSelecionado.DonoId;
+                    CPFSelecionado = donoSelecionado.CPF;
+                    //http://www.macoratti.net/10/09/net_vgb1.htm
+                    Global.NomeDoDonoFromfrmCadastroDono = donoSelecionado.NomeDono;
+                    Global.IDdoDonoFromfrmCadastroDono = donoSelecionado.DonoId;
+                }
             }
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private async void btnSalvar_Click(object sender, EventArgs e)
         {
             var d = new DonoDto()
             {
@@ -54,7 +64,7 @@ namespace WindonsFormsUsingDI
                 CPF = txtCPFDono.Text,
                 Telefone = txtTelefoneDono.Text
             };
-            if (_donoService.AddDono(d))
+            if (await _donoService.AddDono(d))
             {
                 MessageBox.Show("Novo dono salvo com sucesso", "Sucesso!");
                 clearFields();
@@ -66,7 +76,7 @@ namespace WindonsFormsUsingDI
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private async void btnEditar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCPFDono.Text))
             {
@@ -81,7 +91,7 @@ namespace WindonsFormsUsingDI
                     Telefone = txtTelefoneDono.Text
                 };
 
-                if (_donoService.UpdateDono(CPFSelecionado, d))
+                if (await _donoService.UpdateDono(CPFSelecionado, d))
                 {
                     MessageBox.Show("Dono editado com sucesso", "Sucesso!");
                     clearFields();
@@ -96,7 +106,7 @@ namespace WindonsFormsUsingDI
             CPFSelecionado = "";
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private async void btnExcluir_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCPFDono.Text))
             {
@@ -104,7 +114,7 @@ namespace WindonsFormsUsingDI
             }
             else
             {
-                if (_donoService.DeleteDono(CPFSelecionado))
+                if (await _donoService.DeleteDono(CPFSelecionado))
                 {
                     MessageBox.Show("Dono excluído com sucesso", "Sucesso!");
                     clearFields();

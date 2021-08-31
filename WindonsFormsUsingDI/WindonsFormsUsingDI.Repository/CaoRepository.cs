@@ -18,18 +18,24 @@ namespace WindonsFormsUsingDI.Repository
 
         }
 
-        public Cao GetCaoByID(int idCao)
+        public async Task<Cao> GetCaoByID(int idCao)
         {
             IQueryable<Cao> query = _context.tblCao;
-            query = query.Where(d => d.CaoId == idCao);
-            return query.FirstOrDefault();
+            query = query.AsNoTracking()
+                .OrderBy(c => c.CaoId)
+                .Where(d => d.CaoId == idCao);
+            return await query.FirstOrDefaultAsync();
         }
 
-        public Cao GetCaoByNome(string nomeCao)
+        public async Task<Cao> GetCaoByNome(string nomeCao, int IDDono)
         {
             IQueryable<Cao> query = _context.tblCao;
-            query = query.Where(d => d.NomeCao == nomeCao);
-            return  query.FirstOrDefault();
+
+            query = query.AsNoTracking()
+             .Where(cao => cao.NomeCao == nomeCao
+             && cao.DonoId == IDDono);
+
+            return  await query.FirstOrDefaultAsync();
         }
     }
 }
