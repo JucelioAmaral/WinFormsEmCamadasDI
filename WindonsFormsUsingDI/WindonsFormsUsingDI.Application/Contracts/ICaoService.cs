@@ -10,7 +10,7 @@ namespace WindonsFormsUsingDI.Application.Contracts
     {
         bool AddCao(int IdDono, CaoDto dono);
         bool UpdateCao(int IdcaoSelecionado, CaoDto dono);
-        bool DeleteCao(string caoSelecionado);
+        bool DeleteCao(int IdcaoSelecionado);
 
         //CaoDto GetCaoByNomeCao(string nomeCao);             
         Cao GetCaoByNomeCao(string nomeCao);

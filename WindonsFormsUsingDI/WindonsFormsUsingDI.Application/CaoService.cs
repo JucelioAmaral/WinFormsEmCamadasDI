@@ -45,9 +45,17 @@ namespace WindonsFormsUsingDI.Application
             return false;
         }
 
-        public bool DeleteCao(string caoSelecionado)
+        public bool DeleteCao(int IDcaoSelecionado)
         {
-            throw new System.NotImplementedException();
+            var caoSelecionado = _caoRepository.GetCaoByID(IDcaoSelecionado);
+            if (caoSelecionado == null) return false;
+            _geralRepository.Delete(caoSelecionado);
+
+            if (_geralRepository.SaveChanges())
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool UpdateCao(int IDcaoSelecionado, CaoDto cao)

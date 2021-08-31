@@ -29,14 +29,14 @@ namespace WindonsFormsUsingDI
         {
             if (string.IsNullOrEmpty(txtNomeCao.Text) || string.IsNullOrWhiteSpace(txtNomeCao.Text))
             {
-                MessageBox.Show("Campo Nome do Cão está vazio");
+                MessageBox.Show("Campo Nome do Cão está vazio", "Erro!");
             }
             else
             {
                 caoSelecionado = _caoService.GetCaoByNomeCao(txtNomeCao.Text);
                 if (caoSelecionado.NomeCao == "")
                 {
-                    MessageBox.Show("Não há cão com este nome.");
+                    MessageBox.Show("Não há cão com este nome.", "Erro!");
                 }
                 else
                 {
@@ -55,13 +55,13 @@ namespace WindonsFormsUsingDI
             };
             if (_caoService.AddCao(IDDonoSelecionado, d))
             {
-                MessageBox.Show("Cão salvo com sucesso");
+                MessageBox.Show("Cão salvo com sucesso", "Sucesso!");
                 clearFields();
             }
             else
             {
                 clearFields();
-                MessageBox.Show("Erro desconhecido ao salvar dono");
+                MessageBox.Show("Erro desconhecido ao salvar dono", "Erro!");
             }
         }
 
@@ -74,20 +74,38 @@ namespace WindonsFormsUsingDI
             };
             if (_caoService.UpdateCao(IDCaoSelecioonado, d))
             {
-                MessageBox.Show("Cão editado com sucesso");
+                MessageBox.Show("Cão editado com sucesso", "Sucesso!");
                 clearFields();
             }
             else
             {
                 clearFields();
-                MessageBox.Show("Erro desconhecido ao salvar dono");
+                MessageBox.Show("Erro desconhecido ao salvar dono", "Erro!");
             }
-
+            IDCaoSelecioonado = 0;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNomeCao.Text))
+            {
+                MessageBox.Show("Campo Nome Cão está vazio");
+            }
+            else
+            {
+                if (_caoService.DeleteCao(IDCaoSelecioonado))
+                {
+                    MessageBox.Show("Dono excluído com sucesso","Sucesso!");
+                    clearFields();
+                }
+                else
+                {
+                    clearFields();
+                    MessageBox.Show("Erro desconhecido ao salvar dono","Erro!");
+                }
+            }
 
+            IDCaoSelecioonado = 0;
         }
 
         public void clearFields()

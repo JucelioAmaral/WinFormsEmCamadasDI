@@ -28,7 +28,7 @@ namespace WindonsFormsUsingDI
         {
             if (string.IsNullOrEmpty(txtCPFDono.Text) || string.IsNullOrWhiteSpace(txtCPFDono.Text))
             {
-                MessageBox.Show("Campo CPF vazio");
+                MessageBox.Show("Campo CPF vazio", "Erro!");
             }
             else
             {
@@ -56,13 +56,13 @@ namespace WindonsFormsUsingDI
             };
             if (_donoService.AddDono(d))
             {
-                MessageBox.Show("Novo dono salvo com sucesso");
+                MessageBox.Show("Novo dono salvo com sucesso", "Sucesso!");
                 clearFields();
             }
             else
             {
                 clearFields();
-                MessageBox.Show("Erro desconhecido ao salvar dono");
+                MessageBox.Show("Erro desconhecido ao salvar dono", "Erro!");
             }
         }
 
@@ -70,7 +70,7 @@ namespace WindonsFormsUsingDI
         {
             if (string.IsNullOrEmpty(txtCPFDono.Text))
             {
-                MessageBox.Show("Campo CPF vazio");
+                MessageBox.Show("Campo CPF vazio", "Erro!");
             }
             else
             {
@@ -83,13 +83,13 @@ namespace WindonsFormsUsingDI
 
                 if (_donoService.UpdateDono(CPFSelecionado, d))
                 {
-                    MessageBox.Show("Dono editado com sucesso");
+                    MessageBox.Show("Dono editado com sucesso", "Sucesso!");
                     clearFields();
                 }
                 else
                 {
                     clearFields();
-                    MessageBox.Show("Erro desconhecido ao salvar dono");
+                    MessageBox.Show("Erro desconhecido ao salvar dono", "Erro!");
                 }
             }
 
@@ -100,19 +100,19 @@ namespace WindonsFormsUsingDI
         {
             if (string.IsNullOrEmpty(txtCPFDono.Text))
             {
-                MessageBox.Show("Campo CPF vazio");
+                MessageBox.Show("Campo CPF vazio", "Erro!");
             }
             else
             {
                 if (_donoService.DeleteDono(CPFSelecionado))
                 {
-                    MessageBox.Show("Dono excluído com sucesso");
+                    MessageBox.Show("Dono excluído com sucesso", "Sucesso!");
                     clearFields();
                 }
                 else
                 {
                     clearFields();
-                    MessageBox.Show("Erro desconhecido ao salvar dono");
+                    MessageBox.Show("Erro desconhecido ao salvar dono", "Erro!");
                 }
             }
 
@@ -123,7 +123,7 @@ namespace WindonsFormsUsingDI
         {
             if (string.IsNullOrEmpty(txtCPFDono.Text) || string.IsNullOrWhiteSpace(txtCPFDono.Text))
             {
-                MessageBox.Show("Primeiro pesquise o dono do cão(es)");
+                MessageBox.Show("Primeiro pesquise o dono do cão(es)", "Erro!");
             }
             else
             {
