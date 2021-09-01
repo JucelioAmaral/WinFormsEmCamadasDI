@@ -18,3 +18,12 @@ Raca varchar (100),
 DonoId int 
 CONSTRAINT fk_DonoId FOREIGN KEY (DonoId) REFERENCES tblDono (DonoId)
 )
+
+-- Ajuste para deletar em cascata o dono e seu cão.
+ALTER TABLE dbo.tblCao
+  DROP CONSTRAINT fk_DonoId;
+ALTER TABLE dbo.tblCao
+  ADD CONSTRAINT fk_DonoId
+    FOREIGN KEY ( DonoId )
+    REFERENCES tblDono ( DonoId )
+    ON DELETE CASCADE;
