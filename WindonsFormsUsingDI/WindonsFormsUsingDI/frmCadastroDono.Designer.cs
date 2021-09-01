@@ -29,11 +29,9 @@ namespace WindonsFormsUsingDI
         /// </summary>
         private void InitializeComponent()
         {
-            this.dvgDonoCao = new System.Windows.Forms.DataGridView();
+            this.dgvDonoCao = new System.Windows.Forms.DataGridView();
             this.btnPesquisarPeloCPF = new System.Windows.Forms.Button();
             this.btnCadastrarSeuCao = new System.Windows.Forms.Button();
-            this.txtTelefoneDono = new System.Windows.Forms.TextBox();
-            this.txtCPFDono = new System.Windows.Forms.TextBox();
             this.txtNomeDono = new System.Windows.Forms.TextBox();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -48,18 +46,20 @@ namespace WindonsFormsUsingDI
             this.fbdDestino = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgDonoCao)).BeginInit();
+            this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
+            this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDonoCao)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dvgDonoCao
             // 
-            this.dvgDonoCao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgDonoCao.Location = new System.Drawing.Point(25, 222);
-            this.dvgDonoCao.Name = "dvgDonoCao";
-            this.dvgDonoCao.Size = new System.Drawing.Size(528, 285);
-            this.dvgDonoCao.TabIndex = 5;
+            this.dgvDonoCao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDonoCao.Location = new System.Drawing.Point(25, 222);
+            this.dgvDonoCao.Name = "dvgDonoCao";
+            this.dgvDonoCao.Size = new System.Drawing.Size(528, 285);
+            this.dgvDonoCao.TabIndex = 5;
             // 
             // btnPesquisarPeloCPF
             // 
@@ -80,20 +80,6 @@ namespace WindonsFormsUsingDI
             this.btnCadastrarSeuCao.Text = "Cadastrar seu Cão";
             this.btnCadastrarSeuCao.UseVisualStyleBackColor = true;
             this.btnCadastrarSeuCao.Click += new System.EventHandler(this.btnCadastrarSeuCao_Click);
-            // 
-            // txtTelefoneDono
-            // 
-            this.txtTelefoneDono.Location = new System.Drawing.Point(117, 96);
-            this.txtTelefoneDono.Name = "txtTelefoneDono";
-            this.txtTelefoneDono.Size = new System.Drawing.Size(390, 20);
-            this.txtTelefoneDono.TabIndex = 9;
-            // 
-            // txtCPFDono
-            // 
-            this.txtCPFDono.Location = new System.Drawing.Point(117, 57);
-            this.txtCPFDono.Name = "txtCPFDono";
-            this.txtCPFDono.Size = new System.Drawing.Size(390, 20);
-            this.txtCPFDono.TabIndex = 8;
             // 
             // txtNomeDono
             // 
@@ -209,10 +195,10 @@ namespace WindonsFormsUsingDI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.mtxTelefone);
+            this.groupBox1.Controls.Add(this.mtxCPF);
             this.groupBox1.Controls.Add(this.btnPesquisarPeloCPF);
             this.groupBox1.Controls.Add(this.btnCadastrarSeuCao);
-            this.groupBox1.Controls.Add(this.txtTelefoneDono);
-            this.groupBox1.Controls.Add(this.txtCPFDono);
             this.groupBox1.Controls.Add(this.txtNomeDono);
             this.groupBox1.Controls.Add(this.btnExcluir);
             this.groupBox1.Controls.Add(this.btnEditar);
@@ -227,17 +213,33 @@ namespace WindonsFormsUsingDI
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro dos Donos";
             // 
+            // mtxCPF
+            // 
+            this.mtxCPF.Location = new System.Drawing.Point(117, 61);
+            this.mtxCPF.Mask = "000.000.000-00";
+            this.mtxCPF.Name = "mtxCPF";
+            this.mtxCPF.Size = new System.Drawing.Size(84, 20);
+            this.mtxCPF.TabIndex = 13;
+            // 
+            // mtxTelefone
+            // 
+            this.mtxTelefone.Location = new System.Drawing.Point(117, 96);
+            this.mtxTelefone.Mask = "(00)0000-0000";
+            this.mtxTelefone.Name = "mtxTelefone";
+            this.mtxTelefone.Size = new System.Drawing.Size(84, 20);
+            this.mtxTelefone.TabIndex = 14;
+            // 
             // frmCadastroDono
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 619);
-            this.Controls.Add(this.dvgDonoCao);
+            this.Controls.Add(this.dgvDonoCao);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmCadastroDono";
             this.Text = "CADASTRO DE DONO E SEU CÃO";
-            ((System.ComponentModel.ISupportInitialize)(this.dvgDonoCao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDonoCao)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -248,11 +250,9 @@ namespace WindonsFormsUsingDI
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dvgDonoCao;
+        private System.Windows.Forms.DataGridView dgvDonoCao;
         private System.Windows.Forms.Button btnPesquisarPeloCPF;
         private System.Windows.Forms.Button btnCadastrarSeuCao;
-        private System.Windows.Forms.TextBox txtTelefoneDono;
-        private System.Windows.Forms.TextBox txtCPFDono;
         private System.Windows.Forms.TextBox txtNomeDono;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnEditar;
@@ -267,6 +267,8 @@ namespace WindonsFormsUsingDI
         private System.Windows.Forms.FolderBrowserDialog fbdDestino;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.MaskedTextBox mtxTelefone;
+        private System.Windows.Forms.MaskedTextBox mtxCPF;
     }
 }
 
