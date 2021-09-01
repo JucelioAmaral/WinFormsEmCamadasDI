@@ -115,12 +115,25 @@ namespace WindonsFormsUsingDI.Application
             relatorioDonoCao = new List<DonoCaoDto>();
 
             // Join cao and dono based on DonoId
-            var query = from dono in donos
-                        join cao in caes on dono.DonoId equals cao.DonoId
-                        select new { dono.NomeDono, dono.CPF, dono.Telefone, cao.NomeCao, cao.Raca };
+            var leftJoin = from dono in donos
+                        join cao in caes on dono.DonoId equals cao.DonoId into tmpMapp
+                        from temp in tmpMapp.DefaultIfEmpty()                            
+                        select new DonoCaoDto
+                        {
+                            NomeDono = dono.NomeDono,
+                            CPF = dono.CPF,
+                            Telefone = dono.Telefone,
+                            NomeCao = temp==null? "NULL" : temp.NomeCao,
+                            RacaCao = temp == null ? "NULL" : temp.Raca
+                        };
+
+            // MESMA QUERY ACIMA COM TRATAMENTO PARA OS POSSÍVEIS VALORES NULOS, LEFT JOIN.
+            //SELECT d.NomeDono, d.CPF, d.Telefone, c.NomeCao, c.Raca
+            //FROM dbo.tblDono AS d
+            //LEFT JOIN dbo.tblCao AS c ON d.DonoId = c.DonoId
 
 
-            foreach (var i in query)
+            foreach (var i in leftJoin)
             {
                 donoEcao = new DonoCaoDto()
                 {
@@ -128,7 +141,7 @@ namespace WindonsFormsUsingDI.Application
                     CPF = i.CPF,
                     Telefone = i.Telefone,
                     NomeCao = i.NomeCao,
-                    RacaCao = i.Raca
+                    RacaCao = i.RacaCao
                 };
               relatorioDonoCao.Add(donoEcao);
             }
