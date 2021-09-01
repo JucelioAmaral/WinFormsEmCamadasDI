@@ -149,6 +149,7 @@ namespace WindonsFormsUsingDI
             this.btnGerarRelatório.Text = "Gerar relatório";
             this.btnGerarRelatório.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGerarRelatório.UseVisualStyleBackColor = true;
+            this.btnGerarRelatório.Click += new System.EventHandler(this.btnGerarRelatório_Click);
             // 
             // txtInformeRacaCao
             // 

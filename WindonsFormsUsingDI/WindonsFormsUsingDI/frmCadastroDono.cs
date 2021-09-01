@@ -186,5 +186,46 @@ namespace WindonsFormsUsingDI
             txtCPFDono.Clear();
             txtTelefoneDono.Clear();
         }
+
+        private async void btnGerarRelatório_Click(object sender, EventArgs e)
+        {
+            string diretorio = "";
+            try
+            {
+                // Preencher planilha excel/csv
+
+                //var folderPath = @"E:\APLICAÇÕES E CURSOS\PROVA EDESOFT\ProvaEdesoft";
+                //if (!Directory.Exists(folderPath))
+                //    Directory.CreateDirectory(folderPath);
+                //var filePath = $"{folderPath}\\YourFileName.xlsx";
+                //Console.WriteLine($"Exported Successfully to {filePath}");
+
+                //Define as propriedades do controle FolderBrowserDialog
+                fbdDestino.Description = "Selecione uma pasta de destino:";
+                this.fbdDestino.ShowNewFolderButton = true;
+                //Exibe a caixa de diálogo
+                this.fbdDestino.RootFolder = System.Environment.SpecialFolder.MyComputer;
+                if (fbdDestino.ShowDialog() == DialogResult.OK)
+                {
+                    //Exibe a pasta selecionada
+                    diretorio = fbdDestino.SelectedPath;
+                    diretorio = diretorio + @"\";
+                }
+                if(await _geralService.GeraRelatório(txtInformeRacaCao.Text, diretorio))
+                {
+                    lblDiretorioDestino.Text = diretorio + "RelatorioDonoCao.xlsx";
+                    MessageBox.Show("Relatório gerado no diretório informado.","Sucesso!");
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao gerar o Relatório.","Erro!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("btnGerarRelatório_Click: " + ex.Message);
+            }
+        }
     }
 }
