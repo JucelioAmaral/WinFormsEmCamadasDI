@@ -43,7 +43,7 @@ namespace WindonsFormsUsingDI.Application
 
             relatorioDonoCao = new List<DonoCaoDto>();
 
-            // Join products and categories based on CategoryId
+            // Join cao and dono based on DonoId
             var query = from dono in donos
                         join cao in caes on dono.DonoId equals cao.DonoId
                         select new { dono.NomeDono, dono.CPF, dono.Telefone, cao.NomeCao, cao.Raca };

@@ -58,7 +58,7 @@ namespace WindonsFormsUsingDI
             this.dvgDonoCao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgDonoCao.Location = new System.Drawing.Point(25, 222);
             this.dvgDonoCao.Name = "dvgDonoCao";
-            this.dvgDonoCao.Size = new System.Drawing.Size(528, 120);
+            this.dvgDonoCao.Size = new System.Drawing.Size(528, 285);
             this.dvgDonoCao.TabIndex = 5;
             // 
             // btnPesquisarPeloCPF
@@ -160,7 +160,7 @@ namespace WindonsFormsUsingDI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 28);
+            this.label4.Location = new System.Drawing.Point(1, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 13);
             this.label4.TabIndex = 3;
@@ -199,7 +199,7 @@ namespace WindonsFormsUsingDI
             this.groupBox2.Controls.Add(this.btnGerarRelatório);
             this.groupBox2.Controls.Add(this.txtInformeRacaCao);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(25, 348);
+            this.groupBox2.Location = new System.Drawing.Point(25, 513);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(528, 81);
             this.groupBox2.TabIndex = 4;
@@ -230,7 +230,7 @@ namespace WindonsFormsUsingDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 455);
+            this.ClientSize = new System.Drawing.Size(608, 619);
             this.Controls.Add(this.dvgDonoCao);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

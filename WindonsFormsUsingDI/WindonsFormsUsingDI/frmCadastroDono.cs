@@ -26,8 +26,42 @@ namespace WindonsFormsUsingDI
         {
 
             dvgDonoCao.DataSource = await _geralService.ListarRelacionamentoDonoCao();
+            formataGridView(dvgDonoCao);
         }
+        private void formataGridView(DataGridView gdvDados)
+        {
+            var gdvDonoCao = gdvDados;
+            gdvDonoCao.AutoGenerateColumns = false;
+            gdvDonoCao.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            gdvDonoCao.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            //altera a cor das linhas alternadas no grid
+            gdvDonoCao.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            gdvDonoCao.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.Aquamarine;
+            //altera o nome das colunas
+            gdvDonoCao.Columns[0].HeaderText = "Nome do Dono";
+            gdvDonoCao.Columns[1].HeaderText = "CPF";
+            gdvDonoCao.Columns[2].HeaderText = "Telefone";
+            gdvDonoCao.Columns[3].HeaderText = "Nome do Cão";
+            gdvDonoCao.Columns[4].HeaderText = "Raça do Cão";
+            //Largura das colunas
+            gdvDonoCao.Columns[0].Width = 100;
+            gdvDonoCao.Columns[1].Width = 100;
+            gdvDonoCao.Columns[2].Width = 100;
+            gdvDonoCao.Columns[3].Width = 100;
+            gdvDonoCao.Columns[4].Width = 100;
 
+            //esconde a coluna
+            //gdvFunci.Columns[0].Visible = false;
+            //gdvDonoCao.Columns[5].Visible = false;
+            //seleciona a linha inteira
+            gdvDonoCao.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //não permite seleção de multiplas linhas
+            gdvDonoCao.MultiSelect = false;
+            // exibe nulos formatados
+            gdvDonoCao.DefaultCellStyle.NullValue = " - ";
+            //permite que o texto maior que célula não seja truncado
+            gdvDonoCao.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+        }
         private async void btnPesquisarPeloCPF_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCPFDono.Text) || string.IsNullOrWhiteSpace(txtCPFDono.Text))
