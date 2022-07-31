@@ -27,6 +27,15 @@ namespace WindonsFormsUsingDI.Repository
             return await query.FirstOrDefaultAsync();
         }
 
+        public async Task<Cao> GetCaoByIdDonoBD(int IDDono)
+        {
+            IQueryable<Cao> query = _context.tblCao;
+            query = query.AsNoTracking()
+                .OrderBy(c => c.DonoId)
+                .Where(c => c.DonoId == IDDono);
+            return await query.FirstOrDefaultAsync();
+        }
+
         public async Task<Cao> GetCaoByNome(string nomeCao, int IDDono)
         {
             IQueryable<Cao> query = _context.tblCao;

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using WindonsFormsUsingDI.Application.Contracts;
 using WindonsFormsUsingDI.Application.Dtos;
+using WindonsFormsUsingDI.Application.Helpers;
 using WindonsFormsUsingDI.Domain;
 
 namespace WindonsFormsUsingDI
@@ -11,18 +12,42 @@ namespace WindonsFormsUsingDI
         private readonly ICaoService _caoService;
         private readonly IGeralService _geralService;
 
+        private readonly IDonoService _donoService;        
+
         //CaoDto caoSelecionado;
         Cao caoSelecionado;
         public int IDDonoSelecionado;
-        public int IDCaoSelecioonado;
+        public int IDCaoSelecionado;
 
-        public frmCadastroCao(ICaoService caoService, IGeralService geralService)
+        public frmCadastroCao(ICaoService caoService, IGeralService geralService, IDonoService donoService)
         {
             InitializeComponent();
             _caoService = caoService;
             _geralService = geralService;
+            _donoService = donoService;
             txtNomeDono.Text = Global.NomeDoDonoFromfrmCadastroDono;
             IDDonoSelecionado = Global.IDdoDonoFromfrmCadastroDono;
+            GetCaoByIdDono();
+        }
+
+        private async void GetCaoByIdDono()
+        {
+            caoSelecionado = await _caoService.GetCaoByIdDonoBD(IDDonoSelecionado);
+            if (caoSelecionado == null)
+            {
+                string message = $"Cão não encontrado!";
+                string caption = "Aviso!";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Information);
+            }
+            else
+            {
+                IDCaoSelecionado = caoSelecionado.CaoId;
+
+                txtNomeCao.Text = caoSelecionado.NomeCao;
+                txtRacaCao.Text = caoSelecionado.Raca;
+            }
         }
 
         private async void btnPesquisarPeloNomeDoCao_Click(object sender, EventArgs e)
@@ -45,7 +70,7 @@ namespace WindonsFormsUsingDI
                 else
                 {
                     txtRacaCao.Text = caoSelecionado.Raca;
-                    IDCaoSelecioonado = caoSelecionado.CaoId;
+                    IDCaoSelecionado = caoSelecionado.CaoId;
                 }
             }
         }
@@ -73,11 +98,13 @@ namespace WindonsFormsUsingDI
         {
             var d = new CaoDto()
             {
-                NomeCao = txtNomeCao.Text,
-                Raca = txtRacaCao.Text
+                NomeCao = string.IsNullOrEmpty(txtNomeCao.Text) ? "NULL" : txtNomeCao.Text,
+                Raca = string.IsNullOrEmpty(txtRacaCao.Text) ? "NULL" : txtRacaCao.Text,                                
             };
-            if (await _caoService.UpdateCao(IDCaoSelecioonado, d))
+            if (await _caoService.UpdateCao(IDCaoSelecionado, d))
             {
+                frmCadastroDono formDono = new frmCadastroDono(_donoService, _geralService);
+                formDono.CarregarGridView();
                 MessageBox.Show("Cão editado com sucesso", "Sucesso!");
                 clearFields();
             }
@@ -86,7 +113,7 @@ namespace WindonsFormsUsingDI
                 clearFields();
                 MessageBox.Show("Erro desconhecido ao salvar dono", "Erro!");
             }
-            IDCaoSelecioonado = 0;
+            IDCaoSelecionado = 0;
         }
 
         private async void btnExcluir_Click(object sender, EventArgs e)
@@ -97,7 +124,7 @@ namespace WindonsFormsUsingDI
             }
             else
             {
-                if (await _caoService.DeleteCao(IDCaoSelecioonado))
+                if (await _caoService.DeleteCao(IDCaoSelecionado))
                 {
                     MessageBox.Show("Cão excluído com sucesso","Sucesso!");
                     clearFields();
@@ -109,7 +136,7 @@ namespace WindonsFormsUsingDI
                 }
             }
 
-            IDCaoSelecioonado = 0;
+            IDCaoSelecionado = 0;
         }
 
         public void clearFields()

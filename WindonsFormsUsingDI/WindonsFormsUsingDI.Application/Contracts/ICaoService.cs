@@ -15,5 +15,6 @@ namespace WindonsFormsUsingDI.Application.Contracts
 
         //CaoDto GetCaoByNomeCao(string nomeCao);             
         Task<Cao> GetCaoByNomeCao(string nomeCao, int IDDono);
+        Task<Cao> GetCaoByIdDonoBD(int IDDono);
     }
 }

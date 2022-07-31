@@ -20,6 +20,14 @@ namespace WindonsFormsUsingDI.Application
             _caoRepository = caoRepository;
             _mapper = mapper;
         }
+
+        public async Task<Cao> GetCaoByIdDonoBD(int IDDono)
+        {
+            var caoSelecionado = await _caoRepository.GetCaoByIdDonoBD(IDDono);
+            if (caoSelecionado == null) return null;            
+            return caoSelecionado;
+        }
+
         //public CaoDto GetCaoByNomeCao(string nomeCao)
         public async Task<Cao> GetCaoByNomeCao(string nomeCao, int IDDono)
         {

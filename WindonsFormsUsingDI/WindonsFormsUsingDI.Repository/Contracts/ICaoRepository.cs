@@ -10,5 +10,6 @@ namespace WindonsFormsUsingDI.Repository.Contracts
     {
         Task<Cao> GetCaoByID(int idCao);
         Task<Cao> GetCaoByNome(string nomeCao, int IDDono);
+        Task<Cao> GetCaoByIdDonoBD(int IDDono);
     }
 }

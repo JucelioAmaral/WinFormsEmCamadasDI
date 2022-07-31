@@ -26,7 +26,7 @@ namespace WindonsFormsUsingDI
         {
 
             dgvDonoCao.DataSource = await _geralService.ListarRelacionamentoDonoCao();
-            formataGridView(dgvDonoCao);
+            formataGridView(dgvDonoCao);            
         }
         private void formataGridView(DataGridView Dados)
         {
@@ -63,7 +63,7 @@ namespace WindonsFormsUsingDI
             dgvDonoCao.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
         private async void btnPesquisarPeloCPF_Click(object sender, EventArgs e)
-        {
+        {            
             if (string.IsNullOrEmpty(mtxCPF.Text) || string.IsNullOrWhiteSpace(mtxCPF.Text))
             {
                 MessageBox.Show("Campo CPF vazio", "Erro!");
@@ -170,7 +170,7 @@ namespace WindonsFormsUsingDI
             CPFSelecionado = "";
         }
 
-        private void btnCadastrarSeuCao_Click(object sender, EventArgs e)
+        private void btnAtualizaCao_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(mtxCPF.Text) || string.IsNullOrWhiteSpace(mtxCPF.Text))
             {
